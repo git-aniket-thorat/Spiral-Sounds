@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "description": "Online classic vinyl store",
   "main": "server.js",
-  "type":"module",
+  "type": "module",
   "scripts": {
     "start": "node server.js"
   },
   "author": "Aniket Thorat",
   "license": "ISC",
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
   }
 }
