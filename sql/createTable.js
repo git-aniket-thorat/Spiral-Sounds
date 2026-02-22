@@ -4,28 +4,25 @@ import path from 'node:path'
 
 async function createTable() {
 
+
       const db = await open({
             filename: path.join('database.db'),
             driver: sqlite3.Database
-      })
-
-
+      }) 
+ 
       await db.exec(`
-      CREATE TABLE IF NOT EXISTS products (
+            CREATE TABLE users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            title TEXT NOT NULL,  
-            artist TEXT NOT NULL, 
-            price REAL NOT NULL,
-            image TEXT NOT NULL, 
-            year INTEGER,
-            genre TEXT,
-            stock INTEGER
-            )
+            name TEXT,
+            email TEXT UNIQUE NOT NULL,
+            username TEXT UNIQUE NOT NULL,
+            password TEXT NOT NULL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+            );
       `)
 
       await db.close()
-      console.log('Table created')
-
+      console.log('table created')
 }
 
-createTable()
+createTable() 
