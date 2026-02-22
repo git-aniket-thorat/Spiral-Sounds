@@ -4,13 +4,6 @@ import path from 'node:path'
 
 async function createTable() {
 
-/*
-Challenge:
-
-1. Debug this code so a new table 'users' is created.
-   Check you have been successful with logTable.js.
-
-*/ 
 
       const db = await open({
             filename: path.join('database.db'),
