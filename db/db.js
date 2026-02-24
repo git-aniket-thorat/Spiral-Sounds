@@ -8,4 +8,4 @@ export async function getDBConnection(){
         filename:dbPath,
         driver:sqlite3.Database 
     })
-}
+} 
