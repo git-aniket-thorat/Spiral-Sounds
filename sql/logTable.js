@@ -48,3 +48,27 @@ async function logTable() {
 }
 
 logTable()
+
+async function viewAllCards() {
+
+  const db = await getDBConnection()
+
+  const tableName = 'cart_items'
+
+  try { 
+
+    const table = await db.all(`SELECT * FROM ${tableName}`)
+    console.table(table)
+
+  } catch (err) {
+
+    console.error('Error fetching table:', err.message)
+
+  } finally {
+
+    await db.close()
+
+  }
+}
+
+viewAllCards()

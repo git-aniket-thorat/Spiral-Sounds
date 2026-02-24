@@ -5,7 +5,8 @@ export async function addToCart(req, res) {
 
  const productId = parseInt(req.body.productId, 10)
 
- if (isNaN(productId)) {
+   
+  if (isNaN(productId)) {
   return res.status(400).json({ error: 'Invalid product ID'})
  }
 
@@ -24,6 +25,8 @@ export async function addToCart(req, res) {
 }
 
 export async function getCartCount(req, res) {
+  
+
   const db = await getDBConnection()
 
   const result = await db.get(`SELECT SUM(quantity) AS totalItems FROM cart_items WHERE user_id = ?`, [req.session.userId])
@@ -34,7 +37,8 @@ export async function getCartCount(req, res) {
 
 export async function getAll(req, res) {
 
-  const db = await getDBConnection()
+
+    const db = await getDBConnection()
 
   const items = await db.all(`SELECT ci.id AS cartItemId, ci.quantity, p.title, p.artist, p.price FROM cart_items ci JOIN products p ON p.id = ci.product_id WHERE ci.user_id = ?`, [req.session.userId]) 
 
@@ -66,6 +70,7 @@ export async function deleteItem(req, res) {
 
 export async function deleteAll(req, res) {
 
+  
   const db = await getDBConnection()
 
   await db.run('DELETE FROM cart_items WHERE user_id = ?', [req.session.userId])
